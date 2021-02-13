@@ -1,0 +1,9 @@
+ - create grid
+ - create cards
+ - rotate card
+ - add timer
+ - keep count
+ - shuffle cards
+ - user email form
+ - ui design and beautification
+ - connect to server
