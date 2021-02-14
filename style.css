@@ -22,6 +22,7 @@ body{
     background-color: rgba(255, 255, 255, 0.938);
     border: 1px solid rgb(7, 3, 3);
     text-align: center;
+    color: rgba(255, 255, 255, 0.938);;
     font-size: 2vw;
   }
 
@@ -47,4 +48,11 @@ body{
       display: flex;
       justify-content: center;
       padding-top: 5vw;
+  }
+
+  .flip{
+    -webkit-transform: rotateY(360deg);
+    -webkit-transition: -webkit-transform 1s;
+    transform: rotateY(360);
+    transition: 1s;
   }

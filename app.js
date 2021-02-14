@@ -1,9 +1,22 @@
 const gridChoice = 4;
-const array4 = [ 1,3,2,4,5,7,6,8 ];
+let array4 = [ 1,3,2,4,5,7,6,8 ];
+let array2 = [ 1,2 ];
 const grid = document.getElementById('grid'); 
+let cards;
+
+window.addEventListener('load', () => {
+    
+});
+
+showGrid();
+cards = document.querySelectorAll('button');
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+            flipCard(card);
+        })
+});
 
 
-window.addEventListener('load', showGrid);
 
 
 
@@ -13,16 +26,38 @@ function showGrid(){
     } else {
         grid.classList.add('grid2x2');
     }
-    appendBtn();  
+    appendCards();  
 }
 
-function appendBtn(){
+
+
+function flipCard(card){
+    card.classList.add('flip');
+    card.style.color = 'black';
+}
+
+function appendCards(){
     
     const count = gridChoice*gridChoice;
-    for(let i = 1; i <= count; i++){
+    const array = chooseArray();
+    for(let i = 0; i < count; i++){
         const btn = document.createElement('button');
-        btn.innerHTML = 1;                   
+        if( i < array.length ){
+            btn.innerHTML = array[i];
+        } else {
+            //treversing array backwards
+            btn.innerHTML = array[array.length - (i - array.length + 1)];
+        }              
         grid.appendChild(btn);
     }
 
 }
+
+function chooseArray(){
+    if ( gridChoice === 4 ){
+        return array4;
+    } else {
+        return array2;
+    }
+}
+
