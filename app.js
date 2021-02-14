@@ -3,7 +3,7 @@ let array4 = [ 1,3,2,4,5,7,6,8 ];
 let array2 = [ 1,2 ];
 const grid = document.getElementById('grid');
 const moves = document.getElementById('moves');
-let cards, card1, card2, flipped1 = false, flipped2 = false, movesMade = 0;
+let cards, card1, card2, flipped1 = false, flipped2 = false, movesMade = 0, matches = 0;
 
 
 
@@ -46,6 +46,30 @@ function flipCard(card){
     card.classList.add('flip');
     card.style.color = 'black';
     moves.innerHTML = movesMade;
+    matchCards();
+}
+
+function matchCards(){
+    if(card1.innerText === card2.innerText){
+        matches++;
+        //disable click of matched cards
+        card1.removeEventListener('click', () => {
+            flipCard(card);
+        });
+        card2.removeEventListener('click', () => {
+            flipCard(card);
+        });
+        card1 = null; card2 = null;
+        flipped1 = false; flipped2 = false;
+        checkMatches();
+        return;
+    }
+    //add interval
+    card1.classList.remove('flip');
+    card2.classList.remove('flip');
+    card1 = null; card2 = null;
+    flipped1 = false; flipped2 = false;
+    
 }
 
 function appendCards(){
@@ -73,3 +97,18 @@ function chooseArray(){
     }
 }
 
+function displayModal(){
+    //win info
+}
+
+function resetGame(){
+    //shuffle array
+    //remove event listeners
+    //foreach loop to change innerhtml and event listener
+}
+
+function checkMatches(){
+    if(matches === (gridChoice*gridChoice)/2){
+        displayModal();
+    }
+}
