@@ -1,8 +1,9 @@
 const gridChoice = 4;
 let array4 = [ 1,3,2,4,5,7,6,8 ];
 let array2 = [ 1,2 ];
-const grid = document.getElementById('grid'); 
-let cards, card1, card2, flipped1 = false, flipped2 = false;
+const grid = document.getElementById('grid');
+const moves = document.getElementById('moves');
+let cards, card1, card2, flipped1 = false, flipped2 = false, movesMade = 0;
 
 
 
@@ -34,14 +35,17 @@ function flipCard(card){
     if( flipped1 === false){
         flipped1 = true;
         card1 = card;
+        movesMade++;
     } else if ( flipped2 === false){
         if(card === card1) return;
         flipped2 = true;
         card2 = card;
+        movesMade++;
     } else return;
-    
+
     card.classList.add('flip');
     card.style.color = 'black';
+    moves.innerHTML = movesMade;
 }
 
 function appendCards(){
