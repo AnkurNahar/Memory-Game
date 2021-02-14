@@ -2,11 +2,10 @@ const gridChoice = 4;
 let array4 = [ 1,3,2,4,5,7,6,8 ];
 let array2 = [ 1,2 ];
 const grid = document.getElementById('grid'); 
-let cards;
+let cards, card1, card2, flipped1 = false, flipped2 = false;
 
-window.addEventListener('load', () => {
-    
-});
+
+
 
 showGrid();
 cards = document.querySelectorAll('button');
@@ -32,6 +31,15 @@ function showGrid(){
 
 
 function flipCard(card){
+    if( flipped1 === false){
+        flipped1 = true;
+        card1 = card;
+    } else if ( flipped2 === false){
+        if(card === card1) return;
+        flipped2 = true;
+        card2 = card;
+    } else return;
+    
     card.classList.add('flip');
     card.style.color = 'black';
 }
